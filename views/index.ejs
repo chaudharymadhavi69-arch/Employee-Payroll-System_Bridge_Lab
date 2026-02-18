@@ -2,17 +2,43 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title><%= title %></title>
-    <link rel="stylesheet" href="/css/style.css">
-    <script src="/js/script.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Payroll System</title>
+    <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-    <%- include('partials/header') %>
-    <main>
-        <h1><%= title %></h1>
-        <p><%= message %></p>
-        <p>Current Server Time: <%= new Date().toLocaleString() %></p>
-    </main>
-    <%- include('partials/footer') %>
+    <div class="container">
+        <h1>Employee Payroll Dashboard</h1>
+        <a href="/add" class="add-btn">Add New Employee</a>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Department</th>
+                    <th>Basic Salary</th>
+                    <th>Tax (12%)</th>
+                    <th>Net Salary</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% employees.forEach(employee => { %>
+                <tr>
+                    <td><%= employee.id %></td>
+                    <td><%= employee.name %></td>
+                    <td><%= employee.department %></td>
+                    <td>$<%= employee.basicSalary.toFixed(2) %></td>
+                    <td>$<%= employee.tax.toFixed(2) %></td>
+                    <td>$<%= employee.netSalary.toFixed(2) %></td>
+                    <td>
+                        <a href="/edit/<%= employee.id %>" class="edit-btn">Edit</a>
+                        <a href="/delete/<%= employee.id %>" class="delete-btn" onclick="return confirm('Are you sure you want to delete this employee?')">Delete</a>
+                    </td>
+                </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    </div>
 </body>
 </html>
