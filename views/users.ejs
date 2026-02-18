@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/js/script.js"></script>
+</head>
+<body>
+    <%- include('partials/header') %>
+    <main>
+        <h1><%= title %></h1>
+        <% if (users.length > 0) { %>
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% users.forEach(function(user) { %>
+                        <tr>
+                            <td><%= user.id %></td>
+                            <td><%= user.name %></td>
+                            <td><%= user.email %></td>
+                        </tr>
+                    <% }); %>
+                </tbody>
+            </table>
+        <% } else { %>
+            <p>No users found</p>
+        <% } %>
+    </main>
+    <%- include('partials/footer') %>
+</body>
+</html>
