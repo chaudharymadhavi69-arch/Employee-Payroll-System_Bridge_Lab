@@ -23,8 +23,8 @@ app.get('/', async (req, res) => {
         // Calculate tax and net salary for each employee
         const employeesWithCalculations = employees.map(emp => ({
             ...emp,
-            tax: emp.basicSalary * 0.12,
-            netSalary: emp.basicSalary - (emp.basicSalary * 0.12)
+            tax: emp.basicSalary * 0.10,
+            netSalary: emp.basicSalary - (emp.basicSalary * 0.10)
         }));
         res.render('index', { employees: employeesWithCalculations });
     } catch (error) {
